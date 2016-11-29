@@ -1,0 +1,39 @@
+{
+  "grafanaURL": "http://kamsa11:3000",
+  "systemName" : "ВРВР",
+  "startDate" : "2012-04-21T18:25:43-05:00",
+  "endDate" : "2012-04-21T18:25:43-05:00",
+  "db" : "asdfsadfsadf",
+
+
+  "Servers": [
+    {
+      "name": "meret59",
+      "panel_id": "3"
+    },
+    {
+      "name": "meret59",
+      "panel_id": "3"
+    },
+    {
+      "name": "meret59",
+      "panel_id": "3"
+    },
+    {
+      "name": "meret59",
+      "panel_id": "3"
+    },
+    {
+      "name": "meret59",
+      "panel_id": "3"
+    },
+    {
+      "name": "meret59",
+      "panel_id": "3"
+    },
+    {
+      "name": "meret59",
+      "panel_id": "3"
+    }
+  ]
+}
