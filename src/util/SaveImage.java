@@ -12,12 +12,12 @@ public class SaveImage {
 
     public SaveImage(String url) {
         renderUrl = url;
-        ioPath = "/tmp";
+        ioPath = "/tmp/";
     }
 
     public SaveImage(String url, String path) {
         renderUrl = url;
-        ioPath = path;
+        ioPath = "/tmp/" + path;
     }
 
     public boolean GetImage(){

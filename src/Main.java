@@ -16,7 +16,7 @@ public class Main {
         for (Image image : model.getImages()) {
             url = model.getGrafanaURL() + image.getRenderPath() + "?from="
                     + model.getStartDateMills() + "&to=" + model.getEndDateMills()
-                    + "&panelId=" + image.getPanelId() + "&width=" + model.getHeight() + "&height=" + model.getWidth();
+                    + "&panelId=" + image.getPanelId() + "&width=" + model.getWidth() + "&height=" + model.getHeight();
             System.out.println(url);
             new SaveImage(url,image.getServerName()).GetImage();
         }
