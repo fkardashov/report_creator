@@ -28,6 +28,7 @@ public class ReadConfig {
 
     public Model ParceConfig() throws IOException {
         Gson gson = new Gson();
+
         return gson.fromJson(readFile(), Model.class);
     }
 }

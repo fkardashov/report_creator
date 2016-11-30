@@ -1,39 +1,52 @@
 {
-  "grafanaURL": "http://kamsa11:3000",
   "systemName" : "ВРВР",
-  "startDate" : "2012-04-21T18:25:43-05:00",
-  "endDate" : "2012-04-21T18:25:43-05:00",
-  "db" : "asdfsadfsadf",
+  "testName" : "Поск максимума",
+  "grafanaURL": "http://kamsa11:3000",
+
+  "startDate" : "2016-11-21T20:25:43+03:00",
+  "endDate" : "2016-11-30T18:25:43+03:00",
+
+  "width" : "1000",
+  "height" : "500",
 
 
-  "Servers": [
+  "Images": [
     {
-      "name": "meret59",
-      "panel_id": "3"
+      "name": "hardware utilization",
+      "serverName": "meret59",
+      "panel_id": "3",
+      "renderPath" : "/render/dashboard-solo/db/vrvr"
     },
     {
-      "name": "meret59",
-      "panel_id": "3"
+      "name": "hardware utilization",
+      "serverName": "meret59",
+      "panel_id": "3",
+      "renderPath" : "/render/dashboard-solo/db/vrvr"
     },
     {
-      "name": "meret59",
-      "panel_id": "3"
+      "name": "hardware utilization",
+      "serverName": "meret59",
+      "panel_id": "3",
+      "renderPath" : "/render/dashboard-solo/db/vrvr"
     },
     {
-      "name": "meret59",
-      "panel_id": "3"
+      "name": "hardware utilization",
+      "serverName": "meret59",
+      "panel_id": "3",
+      "renderPath" : "/render/dashboard-solo/db/vrvr"
     },
     {
-      "name": "meret59",
-      "panel_id": "3"
+      "name": "hardware utilization",
+      "serverName": "meret59",
+      "panel_id": "3",
+      "renderPath" : "/render/dashboard-solo/db/vrvr"
     },
     {
-      "name": "meret59",
-      "panel_id": "3"
-    },
-    {
-      "name": "meret59",
-      "panel_id": "3"
+      "name": "hardware utilization",
+      "serverName": "meret59",
+      "panel_id": "3",
+      "renderPath" : "/render/dashboard-solo/db/vrvr"
     }
+
   ]
 }

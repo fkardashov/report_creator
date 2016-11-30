@@ -1,19 +1,26 @@
-import com.google.gson.Gson;
 import config.*;
+import org.docx4j.openpackaging.exceptions.InvalidFormatException;
+import util.SaveImage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class Main {
 
 
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException, IOException, InvalidFormatException, ParseException {
 
         Model model = new ReadConfig().ParceConfig();
 
-        System.out.println(model.getSystemName());
-
-        for (Server temp : model.Servers) {
-            System.out.println(temp.getName());
+        String url;
+        for (Image image : model.getImages()) {
+            url = model.getGrafanaURL() + image.getRenderPath() + "?from="
+                    + model.getStartDateMills() + "&to=" + model.getEndDateMills()
+                    + "&panelId=" + image.getPanelId() + "&width=" + model.getHeight() + "&height=" + model.getWidth();
+            System.out.println(url);
+            new SaveImage(url,image.getServerName()).GetImage();
         }
+
+        //docProcess doc = new docProcess();
     }
 }

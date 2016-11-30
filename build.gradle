@@ -9,7 +9,6 @@ version = '1.2'
 
 sourceSets.main.java.srcDirs = ['src']
 mainClassName = "report.Main"
-sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
@@ -17,4 +16,5 @@ repositories {
 
 dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
+    compile 'org.docx4j:docx4j:3.3.1'
 }
