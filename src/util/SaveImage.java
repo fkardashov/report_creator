@@ -14,12 +14,12 @@ public class SaveImage {
 
     public SaveImage(String url) {
         renderUrl = url;
-        ioPath = "\tmp";
+        ioPath = "/tmp";
     }
 
     public SaveImage(String url, String path) {
         renderUrl = url;
-        ioPath =  "C:\\Users\\sbt-kardashov-fm\\Desktop\\ideproj\\report_creator\\tmp\\" + path + ".png";
+        ioPath =  "/home/wasadmin/tmp/" + path + ".png";
     }
 
     public void GetImage() throws IOException {
