@@ -10,8 +10,8 @@ public class ReadConfig {
     public ReadConfig() {
     }
 
-    private  String readFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("config.json"));
+    private  String readFile(String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String         line = null;
         StringBuilder  stringBuilder = new StringBuilder();
 
@@ -26,9 +26,9 @@ public class ReadConfig {
         }
     }
 
-    public Model ParceConfig() throws IOException {
+    public Model ParceConfig(String fileName) throws IOException {
         Gson gson = new Gson();
 
-        return gson.fromJson(readFile(), Model.class);
+        return gson.fromJson(readFile(fileName), Model.class);
     }
 }

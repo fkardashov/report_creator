@@ -1,0 +1,208 @@
+{
+  "systemName" : "СОЧЛ.Платежи",
+  "testName" : "Поиск максимума",
+  "grafanaURL": "http://kamsa11:3000/render",
+
+  "startDate" : "2016-12-01T08:30:00+03:00",
+  "endDate" : "2016-12-01T13:15:43+03:00",
+
+  "width" : "1000",
+  "height" : "500",
+
+  "Images": [
+    {
+      "name": "Запросы к заглушке КСШФС ВХОД",
+      "serverName": " ",
+      "panelId": "1",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+    {
+      "name": "Запросы к заглушке КСШФС ВЫХОД",
+      "serverName": " ",
+      "panelId": "2",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+    {
+      "name": "Запросы к заглушке КСШМДМ ВХОД",
+      "serverName": " ",
+      "panelId": "3",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+    {
+      "name": "Запросы к заглушке КСШМДМ ВЫХОД",
+      "serverName": " ",
+      "panelId": "4",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+    {
+      "name": "Запросы к заглушке КСШПС ВХОД",
+      "serverName": " ",
+      "panelId": "5",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+    {
+      "name": "Запросы к заглушке КСШПС ВЫХОД",
+      "serverName": " ",
+      "panelId": "6",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+    {
+      "name": "Запросы к заглушке КСШОДДО ВХОД",
+      "serverName": " ",
+      "panelId": "7",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+    {
+      "name": "Запросы к заглушке КСШОДДО ВЫХОД",
+      "serverName": " ",
+      "panelId": "8",
+      "renderPath" : "/dashboard-solo/db/sochl_payments_dummies"
+    },
+
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret104",
+      "panelId": "1",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret105",
+      "panelId": "2",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret106",
+      "panelId": "3",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret107",
+      "panelId": "4",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret108",
+      "panelId": "5",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret109",
+      "panelId": "6",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret110",
+      "panelId": "7",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret111",
+      "panelId": "8",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret136",
+      "panelId": "9",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret137",
+      "panelId": "10",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret138",
+      "panelId": "11",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret139",
+      "panelId": "12",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret140",
+      "panelId": "13",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret141",
+      "panelId": "14",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret142",
+      "panelId": "15",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "kamsa7",
+      "panelId": "16",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "kamsa8",
+      "panelId": "17",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret143",
+      "panelId": "18",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret145",
+      "panelId": "19",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "BH утилизация системных ресурсов",
+      "serverName": "meret146",
+      "panelId": "20",
+      "renderPath" : "/dashboard-solo/db/sochl-platezhi"
+    },
+    {
+      "name": "MQ утилизация системных ресурсов",
+      "serverName": "meret49",
+      "panelId": "2",
+      "renderPath" : "/dashboard-solo/db/mq"
+    },
+    {
+      "name": "MQ утилизация системных ресурсов",
+      "serverName": "meret119",
+      "panelId": "7",
+      "renderPath" : "/dashboard-solo/db/mq"
+    },
+    {
+      "name": "MQ утилизация системных ресурсов",
+      "serverName": "meret120",
+      "panelId": "8",
+      "renderPath" : "/dashboard-solo/db/mq"
+    },
+
+    {
+      "name": "Oracle wait class",
+      "serverName": "OracleMetrics",
+      "panelId": "1",
+      "renderPath" : "/dashboard-solo/db/oracle"
+    }
+    ]
+}

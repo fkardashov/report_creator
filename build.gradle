@@ -1,20 +1,27 @@
 group 'report_creator'
-version '1.0-SNAPSHOT'
+version '1.1-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'distribution'
-
-version = '1.2'
 
 sourceSets.main.java.srcDirs = ['src']
 mainClassName = "report.Main"
 
 repositories {
     mavenCentral()
+    maven { url "http://sbtnexus.ca.sbrf.ru:8081/nexus/content/groups/public" }
+    maven { url "http://sbtnexus.ca.sbrf.ru:8081/nexus/content/groups/EFSLT_group/" }
+    maven { url "http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/EFSLT_release/" }
+    maven { url "http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/EFSLT_snapshot/" }
+    maven { url "http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/EFSLT_thirdparty/" }
+    flatDir {
+        dirs 'lib'
+    }
 }
 
 dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
-    compile 'org.docx4j:docx4j:3.3.1'
+    compile 'org.docx4j:docx4j:3.3.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
 }
