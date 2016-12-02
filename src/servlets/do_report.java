@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/sochl_payments")
-public class sochl_payments extends HttpServlet {
+@WebServlet("/do_report")
+public class do_report extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
@@ -18,12 +18,7 @@ public class sochl_payments extends HttpServlet {
         PrintWriter out = response.getWriter(); //Получаем объект, позволяющий записать контент в ответ
         out.write("<html>\n" +
                 "<body>\n" +
-                "<form action=\"sochl_payments\" method=\"POST\">\n" +
-                "        First Name: <input type=\"text\" name=\"first_name\">\n" +
-                "<br />\n" +
-                "        Last Name: <input type=\"text\" name=\"last_name\" />\n" +
-                "<input type=\"submit\" value=\"Submit\" />\n" +
-                "</form>\n" +
+
                 "</body>\n" +
                 "</html>");
     }
