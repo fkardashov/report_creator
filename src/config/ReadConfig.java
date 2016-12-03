@@ -26,9 +26,9 @@ public class ReadConfig {
         }
     }
 
-    public Model ParceConfig(String fileName) throws IOException {
+    public Config ParceConfig(String fileName) throws IOException {
         Gson gson = new Gson();
 
-        return gson.fromJson(readFile(fileName), Model.class);
+        return gson.fromJson(readFile(fileName), Config.class);
     }
 }

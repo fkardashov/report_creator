@@ -49,12 +49,10 @@ war {
 cargo {
     containerId = 'wildfly10x'
     port = 9990
-
     deployable {
         file = file('/build/libs/report_creator.war')
         context = 'reports'
     }
-
     remote {
         hostname = 'localhost'
         username = 'sneg'

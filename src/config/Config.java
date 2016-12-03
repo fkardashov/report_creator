@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model {
+public class Config {
     private String systemName;
     private String testName;
     private String grafanaURL;
@@ -27,6 +27,8 @@ public class Model {
     public void setEndDate(String endDate) {this.endDate = endDate;}
     public void setStartDate(String startDate) { this.startDate = startDate;}
 
+    public void setTestName(String testName) { this.testName = testName; }
+
     public String getStartDateMills() throws ParseException { return getMills(startDate);}
     public String getEndDateMills() throws ParseException { return getMills(endDate);}
 
@@ -35,11 +37,11 @@ public class Model {
         return Long.toString(df.parse(jdate).getTime());
     }
 
-    public static String getImageUrl(Model model, Image image) {
+    public static String getImageUrl(Config config, Image image) {
         try {
-            return model.getGrafanaURL() + image.getRenderPath() + "?from="
-                    + model.getStartDateMills() + "&to=" + model.getEndDateMills()
-                    + "&panelId=" + image.getPanelId() + "&width=" + model.getWidth() + "&height=" + model.getHeight();
+            return config.getGrafanaURL() + image.getRenderPath() + "?from="
+                    + config.getStartDateMills() + "&to=" + config.getEndDateMills()
+                    + "&panelId=" + image.getPanelId() + "&width=" + config.getWidth() + "&height=" + config.getHeight();
         } catch (ParseException e) {
             e.printStackTrace();
         }

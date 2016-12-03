@@ -1,7 +1,7 @@
 package doc;
 
 import config.Image;
-import config.Model;
+import config.Config;
 import org.docx4j.dml.wordprocessingDrawing.Inline;
 import org.docx4j.jaxb.Context;
 import org.docx4j.model.structure.SectionWrapper;
@@ -31,10 +31,11 @@ public class docProcess {
     }
 
 
-    public void createDoc(Model model) throws FileNotFoundException {
+    public void createDoc(Config config) throws FileNotFoundException {
         try {
             WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
             MainDocumentPart wordDocumentPart = wordMLPackage.getMainDocumentPart();
+            wordDocumentPart.addParagraphOfText("Версия ФП:");
             wordDocumentPart.addParagraphOfText("Выводы по тесту:");
 
             InputStream inputStream;
@@ -43,11 +44,11 @@ public class docProcess {
             String altText = "altText";
             int i = 1;
 
-            for (Image image : model.getImages()) {
-                System.out.println(Model.getImageUrl(model, image));
+            for (Image image : config.getImages()) {
+                System.out.println(Config.getImageUrl(config, image));
                 wordDocumentPart.addParagraphOfText("Рисунок " + i++ + ". " + image.getName() + " " + image.getServerName() + ".");
 
-                inputStream = new SaveImage(Model.getImageUrl(model, image),
+                inputStream = new SaveImage(Config.getImageUrl(config, image),
                         image.getServerName()).GetImageInputStream();
                 byte[] bytes = IOUtils.toByteArray(inputStream);
                 inputStream.close();
@@ -56,14 +57,14 @@ public class docProcess {
                 wordDocumentPart.addObject(p);
 
             }
-            String hr = "ФП." + model.getSystemName() + " " + model.getTestName() + " от "
-                    + model.getStartDate().substring(0, 10);
+            String hr = "ФП." + config.getSystemName() + " " + config.getTestName() + " от "
+                    + config.getStartDate().substring(0, 10);
 
             createHeaderPart(wordMLPackage,  hr);
             addFooterToDocument(wordMLPackage, "1.0");
 
-            String fn = model.getSystemName() + "_" + model.getTestName() + "_"
-                    + model.getStartDate().substring(0, 19).replace(':', '_') + ".docx";
+            String fn = config.getSystemName() + "_" + config.getTestName() + "_"
+                    + config.getStartDate().substring(0, 19).replace(':', '_') + ".docx";
             wordMLPackage.save(new File(fn));
 
         } catch (Docx4JException e) {
