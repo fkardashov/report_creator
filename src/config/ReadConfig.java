@@ -2,16 +2,15 @@ package config;
 
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class ReadConfig {
     public ReadConfig() {
     }
 
     private  String readFile(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+                new FileInputStream(fileName)));
         String         line = null;
         StringBuilder  stringBuilder = new StringBuilder();
 

@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
+
 
 @WebServlet("/test")
 public class test extends HttpServlet {
 
     @Override
-    public void doPost(HttpServletRequest request,
+    public void doGet(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
         OutputStream out = response.getOutputStream();

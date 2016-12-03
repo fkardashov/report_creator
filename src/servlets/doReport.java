@@ -37,10 +37,10 @@ public class doReport extends HttpServlet {
                 configFileName = "vrvr.json";
                 break;
             case "sochl_payments":
-                configFileName = "sochl_payments";
+                configFileName = "sochl_payments.json";
                 break;
             case "sochl_deposit":
-                configFileName = "sochl_deposit.json";
+                configFileName = "sochl_deposits.json";
                 break;
             case "test":
                 configFileName = "test.json";
@@ -79,26 +79,33 @@ public class doReport extends HttpServlet {
         if (!request.getParameterValues("desc")[0].equals(""))
         {
             config.setTestName(request.getParameterValues("desc")[0]);
-            out.write(request.getParameterValues("desc")[0].getBytes());
         }
         //делаем док
         docProcess doc = new docProcess();
         doc.createDoc(config);
 
-        String fileName = new String(config.getFileFolder() + config.getFileName());
-        File file = new File(fileName);
+        if(doc.isCreateDoc()){
 
-        response.setContentType("application/docx");
-        response.setContentLength((int) file.length());
-        response.setHeader( "Content-Disposition", "attachment; filename=" + config.getFileName());
+            String fileName = new String(config.getFileFolder() + config.getFileName());
+            File file = new File(fileName);
 
-        FileInputStream in = new FileInputStream(file);
-        byte[] buffer = new byte[1024*1024];
-        int length;
-        while ((length = in.read(buffer)) > 0){
-            out.write(buffer, 0, length);
+            response.setContentType("application/docx");
+            response.setContentLength((int) file.length());
+            response.setHeader("Content-Disposition", "attachment; filename=" + config.getFileName());
+
+            FileInputStream in = new FileInputStream(file);
+            byte[] buffer = new byte[1024 * 1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+            in.close();
         }
-        in.close();
+        else {
+            out.write(FormGenerator.getFormString().getBytes());
+            out.write(FormGenerator.getErrorDate("Не получилось создать файл, возможно что-то с графаной.").getBytes());
+            return;
+        }
         out.flush();
     }
 

@@ -39,7 +39,7 @@ public class FormGenerator {
                 time +
                 "\" name=\"end\" />\n" +
                 "<br /><br />\n" +
-                "Название теста <input type=\"text\" value=\"\" name=\"desc\" size=\"65\"  />\n" +
+                "Название теста <input type=\"text\" value=\"\" name=\"desc\" size=\"64\"  />\n" +
                 "<br /><br />\n" +
                 "<input name=\"radio\" type=\"radio\" value=\"sochl_payments\" />СОЧЛ.Платежи<br/>" +
                 "<input name=\"radio\" type=\"radio\" value=\"sochl_deposit\" />СОЧЛ.Вклады<br/>" +

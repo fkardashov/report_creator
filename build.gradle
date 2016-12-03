@@ -54,6 +54,7 @@ war {
         into('configs')
     }
 }
+war.finalizedBy(cargoRedeployRemote)
 cargo {
     containerId = 'wildfly10x'
     port = 9990

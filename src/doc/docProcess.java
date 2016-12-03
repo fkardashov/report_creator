@@ -5,7 +5,6 @@ import config.Config;
 import org.docx4j.dml.wordprocessingDrawing.Inline;
 import org.docx4j.jaxb.Context;
 import org.docx4j.model.structure.SectionWrapper;
-import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.docx4j.openpackaging.exceptions.InvalidFormatException;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.BinaryPartAbstractImage;
@@ -19,7 +18,6 @@ import util.SaveImage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.Iterator;
@@ -27,7 +25,13 @@ import java.util.List;
 
 public class docProcess {
 
+    public boolean isCreateDoc() {
+        return isCreateDoc;
+    }
+
+    private boolean isCreateDoc;
     public docProcess() {
+        isCreateDoc = false;
     }
 
 
@@ -58,7 +62,7 @@ public class docProcess {
                     wordDocumentPart.addObject(p);
 
                 }
-                String hr = "ФП." + config.getSystemName() + " " + config.getTestName() + " от "
+                String hr = "ФП." + config.getSystemName() + " " + config.getTestName()+" от "
                         + config.getStartDate().substring(0, 10);
 
                 createHeaderPart(wordMLPackage, hr);
@@ -66,15 +70,11 @@ public class docProcess {
             }
             wordMLPackage.save(new File(config.getFileFolder() + config.getFileName()));
 
-        } catch (InvalidFormatException e) {
+        } catch ( Exception e) {
             e.printStackTrace();
-        } catch (Docx4JException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+            return;
         }
+        isCreateDoc = true;
     }
     public static P newImage(WordprocessingMLPackage wordMLPackage, byte[] bytes,
                              String filenameHint, String altText, int id1, int id2) throws Exception {
