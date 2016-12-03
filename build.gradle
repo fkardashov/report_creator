@@ -34,18 +34,26 @@ dependencies {
     compile 'org.docx4j:docx4j:3.3.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
     compile 'javax.servlet:javax.servlet-api:3.0.1'
+    compile 'com.googlecode.jaxb-namespaceprefixmapper-interfaces:JAXBNamespacePrefixMapper:2.2.4'
+    compile 'com.sun.xml.bind:jaxb-impl:2.2.3-1'
+
 
     def cargoVersion = '1.6.1'
     cargo "org.codehaus.cargo:cargo-core-uberjar:$cargoVersion",
           "org.codehaus.cargo:cargo-ant:$cargoVersion"
 }
 
-war {
-   // into("WEB-INF") {
-     //   from("webapp/WEB-INF/web.xml")
-   // }
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
+war {
+    from('configs') {
+        include '*.json'
+        into('configs')
+    }
+}
 cargo {
     containerId = 'wildfly10x'
     port = 9990

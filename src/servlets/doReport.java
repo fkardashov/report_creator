@@ -1,5 +1,9 @@
 package servlets;
 
+import config.Config;
+import config.ReadConfig;
+import doc.docProcess;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,17 +20,39 @@ public class doReport extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html"); //Задаем формат ответа - HTML, текст
-        //response.setCharacterEncoding("windows-1251");
+        response.setCharacterEncoding("windows-1251");
         PrintWriter out = response.getWriter(); //Получаем объект, позволяющий записать контент в ответ
+
         out.write(FormGenerator.getFormString());
     }
     @Override
     public void doPost(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException {
-
         OutputStream out = response.getOutputStream();
 
+        String configFileName = "";
+        switch (request.getParameterValues("radio")[0]) {
+            case "vrvr":
+                configFileName = "vrvr.json";
+                break;
+            case "sochl_payments":
+                configFileName = "sochl_payments";
+                break;
+            case "sochl_deposit":
+                configFileName = "sochl_deposit.json";
+                break;
+            case "test":
+                configFileName = "test.json";
+                break;
+
+            default:
+                out.write(FormGenerator.getFormString().getBytes());
+                out.write(FormGenerator.getErrorDate("Какая-то фигня с радио-батонами").getBytes());
+                return;
+        }
+        // загружаем нужный конфиг
+        Config config = new ReadConfig().ParceConfig(getServletContext().getRealPath("/") + "/configs/" + configFileName);
 
 
         //проверка даты начал и конца теста
@@ -35,6 +61,9 @@ public class doReport extends HttpServlet {
             out.write(FormGenerator.getErrorDate("Неправильная дата начала теста").getBytes());
             return;
         }
+        else {
+            config.setStartDate(request.getParameterValues("start")[0]);
+        }
 
         if(!isDate(request.getParameterValues("end")[0])) {
 
@@ -42,55 +71,34 @@ public class doReport extends HttpServlet {
             out.write(FormGenerator.getErrorDate("Неправильная дата конца теста").getBytes());
             return;
         }
-
-        switch (request.getParameterValues("radio")[0]) {
-            case "vrvr":
-                break;
-            case "sochl_payments":
-                break;
-            case "sochl_deposit":
-                break;
-            case "test":
-                break;
-
-            default:
-                out.write(FormGenerator.getFormString().getBytes());
-                out.write(FormGenerator.getErrorDate("Какая-то фигня с радио-батонами").getBytes());
-                return;
+        else {
+            config.setEndDate(request.getParameterValues("end")[0]);
         }
+
 
         if (!request.getParameterValues("desc")[0].equals(""))
         {
-
+            config.setTestName(request.getParameterValues("desc")[0]);
+            out.write(request.getParameterValues("desc")[0].getBytes());
         }
+        //делаем док
+        docProcess doc = new docProcess();
+        doc.createDoc(config);
 
-
-
-
-//        out.write(request.getParameterValues("desc")[0] + "<br />");
-//        out.write(request.getParameterValues("radio")[0] + "<br />");
-
-        System.getProperty("os.name");
-
-        String fileName = new String("C:\\Users\\sbt-kardashov-fm\\выпвыафваыфавыфав.docx".getBytes(),"UTF8");
+        String fileName = new String(config.getFileFolder() + config.getFileName());
         File file = new File(fileName);
 
-        //System.getProperty("os.name")
-        //response.setContentType("application/docx");
-        //response.setContentLength((int) file.length());
+        response.setContentType("application/docx");
+        response.setContentLength((int) file.length());
+        response.setHeader( "Content-Disposition", "attachment; filename=" + config.getFileName());
 
-        //response.setHeader( "Content-Disposition", "attachment; filename=" + "test.docx");
-
-
-        // This should send the file to browser
-//        FileInputStream in = new FileInputStream(file);
-//        byte[] buffer = new byte[1024*1024];
-//        int length;
-//        while ((length = in.read(buffer)) > 0){
-//            out.write(buffer, 0, length);
-//        }
-//        in.close();
-
+        FileInputStream in = new FileInputStream(file);
+        byte[] buffer = new byte[1024*1024];
+        int length;
+        while ((length = in.read(buffer)) > 0){
+            out.write(buffer, 0, length);
+        }
+        in.close();
         out.flush();
     }
 
@@ -99,5 +107,4 @@ public class doReport extends HttpServlet {
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();
     }
-
 }

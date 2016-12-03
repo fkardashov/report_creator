@@ -44,29 +44,30 @@ public class docProcess {
             String altText = "altText";
             int i = 1;
 
-            for (Image image : config.getImages()) {
-                System.out.println(Config.getImageUrl(config, image));
-                wordDocumentPart.addParagraphOfText("Рисунок " + i++ + ". " + image.getName() + " " + image.getServerName() + ".");
+            if (config.getImages() != null) {
+                for (Image image : config.getImages()) {
+                    System.out.println(Config.getImageUrl(config, image));
+                    wordDocumentPart.addParagraphOfText("Рисунок " + i++ + ". " + image.getName() + " " + image.getServerName() + ".");
 
-                inputStream = new SaveImage(Config.getImageUrl(config, image),
-                        image.getServerName()).GetImageInputStream();
-                byte[] bytes = IOUtils.toByteArray(inputStream);
-                inputStream.close();
+                    inputStream = new SaveImage(Config.getImageUrl(config, image),
+                            image.getServerName()).GetImageInputStream();
+                    byte[] bytes = IOUtils.toByteArray(inputStream);
+                    inputStream.close();
 
-                P p = newImage(wordMLPackage, bytes, filenameHint, altText, 0, 1);
-                wordDocumentPart.addObject(p);
+                    P p = newImage(wordMLPackage, bytes, filenameHint, altText, 0, 1);
+                    wordDocumentPart.addObject(p);
 
+                }
+                String hr = "ФП." + config.getSystemName() + " " + config.getTestName() + " от "
+                        + config.getStartDate().substring(0, 10);
+
+                createHeaderPart(wordMLPackage, hr);
+                addFooterToDocument(wordMLPackage, "1.0");
             }
-            String hr = "ФП." + config.getSystemName() + " " + config.getTestName() + " от "
-                    + config.getStartDate().substring(0, 10);
+            wordMLPackage.save(new File(config.getFileFolder() + config.getFileName()));
 
-            createHeaderPart(wordMLPackage,  hr);
-            addFooterToDocument(wordMLPackage, "1.0");
-
-            String fn = config.getSystemName() + "_" + config.getTestName() + "_"
-                    + config.getStartDate().substring(0, 19).replace(':', '_') + ".docx";
-            wordMLPackage.save(new File(fn));
-
+        } catch (InvalidFormatException e) {
+            e.printStackTrace();
         } catch (Docx4JException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -75,7 +76,6 @@ public class docProcess {
             e.printStackTrace();
         }
     }
-
     public static P newImage(WordprocessingMLPackage wordMLPackage, byte[] bytes,
                              String filenameHint, String altText, int id1, int id2) throws Exception {
         BinaryPartAbstractImage imagePart = BinaryPartAbstractImage.createImagePart(wordMLPackage, bytes);
@@ -197,7 +197,7 @@ public class docProcess {
 
         RPr rpr = new RPr();
         HpsMeasure size = new HpsMeasure();
-        size.setVal(BigInteger.valueOf(32));
+        size.setVal(BigInteger.valueOf(18));
         rpr.setSz(size);
         run.setRPr(rpr);
         Text text = new Text();

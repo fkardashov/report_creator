@@ -15,12 +15,12 @@ public class FormGenerator {
                 "<html><head><title>Получение протокола теста</title>" +
                 "  <style>\n" +
                 "   h1 {\n" +
-                "    font-family: consolas; /* Гарнитура текста */ \n" +
-                "    font-size: 200%; /* Размер шрифта в процентах */ \n" +
+                "    font-family: consolas;\n" +
+                "    font-size: 200%;\n" +
                 "   } \n" +
                 "   p {\n" +
                 "    font-family: consolas; \n" +
-                "    font-size: 12pt; /* Размер шрифта в пунктах */ \n" +
+                "    font-size: 12pt;\n" +
                 "   }\n" +
                 "  </style>" +
                 "</head>" +
@@ -31,15 +31,15 @@ public class FormGenerator {
                 "<tr><td style=\"vertical-align:middle\">" +
                 "<h1>Получение протокола теста</h1>\n" +
                 "<form action=\"doReport\" method=\"POST\">" +
-                "<p>Время старта: <input type=\"text\" value=\"" +
+                "<p>Время старта <input type=\"text\" value=\"" +
                 time +
                 "\" name=\"start\">\n" +
 
-                "Время окончания: <input type=\"text\" value=\"" +
+                "Время окончания <input type=\"text\" value=\"" +
                 time +
                 "\" name=\"end\" />\n" +
                 "<br /><br />\n" +
-                "Название теста <input type=\"text\" value=\"\" name=\"desc\" size=\"66\"  />\n" +
+                "Название теста <input type=\"text\" value=\"\" name=\"desc\" size=\"65\"  />\n" +
                 "<br /><br />\n" +
                 "<input name=\"radio\" type=\"radio\" value=\"sochl_payments\" />СОЧЛ.Платежи<br/>" +
                 "<input name=\"radio\" type=\"radio\" value=\"sochl_deposit\" />СОЧЛ.Вклады<br/>" +

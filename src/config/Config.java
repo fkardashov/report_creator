@@ -48,6 +48,18 @@ public class Config {
         return null;
     }
 
+    public String getFileName(){
+        return getSystemName() + "_" + getTestName() + "_"
+                + getStartDate().substring(0, 19).replace(':', '_') + ".docx";
+    }
+
+    public String getFileFolder() {
+        if (System.getProperty("os.name").contains("Windows")) return "C:\\Users\\sbt-kardashov-fm\\";
+        if (System.getProperty("os.name").contains("unix")) return "/home/wasadmin/reports/";
+
+        return "";
+    }
 }
+
 
 

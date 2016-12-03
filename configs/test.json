@@ -1,0 +1,13 @@
+{
+  "systemName" : "test",
+  "testName" : "тест тест тест",
+  "grafanaURL": "http://kamsa11:3000/render",
+
+  "startDate" : "2016-12-01T10:17:00+03:00",
+  "endDate" : "2016-12-01T12:45:43+03:00",
+
+  "width" : "1000",
+  "height" : "500",
+
+  "Images": []
+}
