@@ -56,7 +56,7 @@ public class FormGenerator {
         return "<style>" +
                 "h2 {font-family: consolas;" +
                 "font-size: 150%;" +
-                "font-color: red"+
+                "color:#DF7401; position:absolute;top: 80%;"+
                 "align: center" +
                 "}" +
                 "</style>" +
@@ -64,5 +64,4 @@ public class FormGenerator {
                 string +
                 "</h2>";
     }
-
 }
