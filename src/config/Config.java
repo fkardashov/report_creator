@@ -1,6 +1,8 @@
 package config;
 
 import com.fasterxml.jackson.databind.util.*;
+
+import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,10 +56,10 @@ public class Config {
     }
 
     public String getFileFolder() {
-        if (System.getProperty("os.name").contains("Windows")) return "C:\\Users\\sbt-kardashov-fm\\";
-        if (System.getProperty("os.name").contains("unix")) return "/home/wasadmin/reports/";
+        if (System.getProperty("os.name").contains("Windows")) return System.getProperty("user.home") + File.separator + "Documents" + File.separator;
+        if (System.getProperty("os.name").contains("unix")) return System.getProperty( "user.home" ) + File.separator + "reports" + File.separator;
 
-        return "";
+        return "./";
     }
 }
 

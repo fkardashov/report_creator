@@ -19,9 +19,9 @@ public class doReport extends HttpServlet {
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html"); //Задаем формат ответа - HTML, текст
+        response.setContentType("text/html");
         response.setCharacterEncoding("windows-1251");
-        PrintWriter out = response.getWriter(); //Получаем объект, позволяющий записать контент в ответ
+        PrintWriter out = response.getWriter();
 
         out.write(FormGenerator.getFormString());
     }
