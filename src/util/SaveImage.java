@@ -1,9 +1,6 @@
 package util;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -19,7 +16,7 @@ public class SaveImage {
 
     public SaveImage(String url, String path) {
         renderUrl = url;
-        ioPath =  "/home/wasadmin/tmp/" + path + ".png";
+        ioPath =  System.getProperty( "user.home" ) + File.separator + "tmp" + File.separator + path + ".png";
     }
 
     public void GetImage() throws IOException {
